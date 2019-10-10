@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.Register">
+
+
+    <RelativeLayout
+        android:id="@+id/dim_back2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/register">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:padding="12dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:text="Register"/>
+
+                <ImageView
+                    android:id="@+id/reg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_shield"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Your information is secured with us\nLet's get started"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp"
+                    android:weightSum="2">
+
+                    <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                        android:id="@+id/fname_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:hint="First name"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:inputType="textPersonName"
+                        app:textBoxColor="@color/colorAccent"
+                        app:floatingLabelColor="@color/colorAccent"
+                        android:layout_weight="1"
+                        />
+
+                    <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                        android:id="@+id/lname_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:hint="Last name"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="6dp"
+                        android:inputType="textPersonName"
+                        app:textBoxColor="@color/colorAccent"
+                        app:floatingLabelColor="@color/colorAccent"
+                        android:layout_weight="1"
+                        />
+
+
+                </LinearLayout>
+
+                <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                    android:id="@+id/email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:hint="Email"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:inputType="textEmailAddress"
+                    app:textBoxColor="@color/colorAccent"
+                    app:floatingLabelColor="@color/colorAccent"
+                    />
+
+                <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                    android:id="@+id/emp_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:hint="Emp Id"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:inputType="number"
+                    app:textBoxColor="@color/colorAccent"
+                    app:floatingLabelColor="@color/colorAccent"
+                    />
+
+                <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                    android:id="@+id/psd_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:hint="Password"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:inputType="textPassword"
+                    app:textBoxColor="@color/colorAccent"
+                    app:floatingLabelColor="@color/colorAccent"
+                    />
+
+                <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                    android:id="@+id/phone_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:hint="Phone"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:inputType="phone"
+                    app:textBoxColor="@color/colorAccent"
+                    app:floatingLabelColor="@color/colorAccent"
+                    />
+                <com.tomlonghurst.expandablehinttext.ExpandableHintText
+                    android:id="@+id/address_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:hint="Address"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:inputType="textPostalAddress"
+                    app:textBoxColor="@color/colorAccent"
+                    app:floatingLabelColor="@color/colorAccent"
+                    />
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="2dp"
+            android:clickable="true"
+            android:background="@drawable/green_button"
+            android:text="Done"
+            android:textColor="@color/white"
+
+            />
+
+
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:layout_marginBottom="8dp"
+        android:id="@+id/progressBarReg"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:theme="@style/ProgressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"/>
+
+
+</RelativeLayout>
