@@ -83,7 +83,7 @@
                             android:id="@+id/fname_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
+                            android:inputType="textCapWords"
                             android:textSize="14sp" android:textCursorDrawable="@null"
                             android:imeOptions="actionNext"
                             android:textColor="@color/colorAccent"/>
@@ -106,7 +106,7 @@
                             android:id="@+id/lname_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
+                            android:inputType="textCapWords"
                             android:textSize="14sp" android:textCursorDrawable="@null"
                             android:imeOptions="actionNext"
                             android:textColor="@color/colorAccent"/>
@@ -225,7 +225,7 @@
                         android:id="@+id/address_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textCapSentences"
+                        android:inputType="textCapWords"
                         android:textSize="14sp" android:textCursorDrawable="@null"
                         android:imeOptions="actionDone"
                         android:textColor="@color/colorAccent"/>
