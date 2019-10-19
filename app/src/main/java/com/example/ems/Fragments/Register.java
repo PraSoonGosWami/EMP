@@ -3,15 +3,14 @@ package com.example.ems.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -19,16 +18,12 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.ems.Model.Emp;
 import com.example.ems.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.AuthResult;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tomlonghurst.expandablehinttext.ExpandableHintText;
 
 import static com.example.ems.Utils.Helper.LONG;
 import static com.example.ems.Utils.Helper.animateError;
@@ -42,8 +37,8 @@ import static com.example.ems.Utils.Helper.showSnackbar;
 
 public class Register extends Fragment {
 
-    private ExpandableHintText fname_register,lname_register,email_register,emp_register,psd_register,phone_register,address_register;
-    private Button register;
+    private TextInputEditText fname_register,lname_register,email_register,emp_register,psd_register,phone_register,address_register;
+    private AppCompatButton register;
     private ProgressBar progressBarReg;
     private RelativeLayout background ;
     private FirebaseDatabase firebaseDatabase;
@@ -83,8 +78,8 @@ public class Register extends Fragment {
         background.setBackgroundResource(android.R.color.transparent);
 
 
-        YoYo.with(Techniques.Landing)
-                .duration(1200)
+        YoYo.with(Techniques.ZoomIn)
+                .duration(1000)
                 .playOn(view.findViewById(R.id.reg));
 
         register.setOnClickListener(v->{
@@ -100,52 +95,52 @@ public class Register extends Fragment {
 
     public void register(){
 
-        String fName = fname_register.getText().trim();
-        String lName = lname_register.getText().trim();
-        String email = email_register.getText().trim();
-        String eid = emp_register.getText().trim();
-        String psd = psd_register.getText().trim();
-        String phone = phone_register.getText().trim();
-        String address = address_register.getText().trim();
+        String fName = fname_register.getText().toString().trim();
+        String lName = lname_register.getText().toString().trim();
+        String email = email_register.getText().toString().trim();
+        String eid = emp_register.getText().toString().trim();
+        String psd = psd_register.getText().toString().trim();
+        String phone = phone_register.getText().toString().trim();
+        String address = address_register.getText().toString().trim();
 
 
         if (fName.isEmpty()) {
-            fname_register.setHintText("First name is required");
+            fname_register.setError("First name is required");
             fname_register.requestFocus();
             animateError(fname_register,700);
             return;
         }
 
         if (lName.isEmpty()) {
-            lname_register.setHintText("Last name is required");
+            lname_register.setError("Last name is required");
             lname_register.requestFocus();
             animateError(lname_register,700);
             return;
         }
 
         if (eid.isEmpty()) {
-            emp_register.setHintText("Enter your Emp Id");
+            emp_register.setError("Enter your Emp Id");
             emp_register.requestFocus();
             animateError(emp_register,700);
             return;
         }
 
         if (phone.isEmpty()) {
-            phone_register.setHintText("Enter phone no.");
+            phone_register.setError("Enter phone no.");
             phone_register.requestFocus();
             animateError(phone_register,700);
             return;
         }
 
         if (phone.length()!=10) {
-            phone_register.setHintText("Invalid phone no");
+            phone_register.setError("Invalid phone no");
             phone_register.requestFocus();
             animateError(phone_register,700);
             return;
         }
 
         if (email.isEmpty()) {
-            email_register.setHintText("Email is required");
+            email_register.setError("Email is required");
             email_register.requestFocus();
             animateError(email_register,700);
             return;
@@ -153,35 +148,35 @@ public class Register extends Fragment {
 
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            email_register.setHintText("Please enter a valid email");
+            email_register.setError("Please enter a valid email");
             email_register.requestFocus();
             animateError(email_register,700);
             return;
         }
 
         if (psd.isEmpty()) {
-            psd_register.setHintText("Password is required");
+            psd_register.setError("Password is required");
             psd_register.requestFocus();
             animateError(psd_register,700);
             return;
         }
 
         if (psd.length() <6) {
-            psd_register.setHintText("Password must contain at least 6 characters");
+            psd_register.setError("Password must contain at least 6 characters");
             psd_register.requestFocus();
             animateError(psd_register,700);
             return;
         }
 
         if (address.isEmpty()) {
-            address_register.setHintText("Address is required");
+            address_register.setError("Address is required");
             address_register.requestFocus();
             animateError(address_register,700);
             return;
         }
 
         if (address.length()<10) {
-            address_register.setHintText("Please enter full address");
+            address_register.setError("Please enter full address");
             address_register.requestFocus();
             animateError(address_register,700);
             return;

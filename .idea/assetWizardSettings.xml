@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_shield" />
-                            <entry key="sourceFile" value="C:\Users\goswa\Downloads\shield.svg" />
+                            <entry key="outputName" value="ic_signin" />
+                            <entry key="sourceFile" value="C:\Users\goswa\Downloads\signin.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.ems.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button logout;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.light);
+
+        firebaseUser = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        if(firebaseUser!=null)
+            checkApprovedStatus();
 
 
 
@@ -43,11 +51,35 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void checkApprovedStatus(){
+        databaseReference.child("Emp").child(firebaseUser.getUid()).child("profileApproved")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()) {
+                            boolean profileApproved = dataSnapshot.getValue(Boolean.class);
+                            if(!profileApproved){
+                                firebaseAuth.signOut();
+                                Toast.makeText(MainActivity.this, "Your profile has not yet been approved by the admin", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(MainActivity.this,Auth.class));
+                                finish();
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        if(firebaseAuth.getCurrentUser() == null){
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
             startActivity(new Intent(this,Auth.class));
             finish();
         }

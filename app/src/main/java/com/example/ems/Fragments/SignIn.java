@@ -29,9 +29,11 @@ import com.example.ems.Utils.Helper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.tomlonghurst.expandablehinttext.ExpandableHintText;
+
 
 import static com.example.ems.Utils.Helper.SHORT;
 import static com.example.ems.Utils.Helper.animateError;
@@ -46,7 +48,8 @@ public class SignIn extends Fragment {
 
     private ImageView logo;
     private FloatingActionButton loginButton;
-    private ExpandableHintText email_edittext,password_edittext;
+    private TextInputEditText email_edittext,password_edittext;
+    private TextInputLayout emailTextInputLayout,psdTextInputLayout;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private TextView forgotPassword,register;
@@ -68,6 +71,8 @@ public class SignIn extends Fragment {
         loginButton = view.findViewById(R.id.signin);
         email_edittext = view.findViewById(R.id.email_login);
         password_edittext = view.findViewById(R.id.password_login);
+        emailTextInputLayout = view.findViewById(R.id.emailTextInputLayout);
+        psdTextInputLayout = view.findViewById(R.id.psdTextInputLayout);
         progressBar = view.findViewById(R.id.progressBar);
         forgotPassword = view.findViewById(R.id.forgot_password);
         register = view.findViewById(R.id.register);
@@ -102,27 +107,27 @@ public class SignIn extends Fragment {
 
     //firebase login
     public void userLogin() {
-        String email = email_edittext.getText().trim();
-        String password = password_edittext.getText().trim();
+        String email = email_edittext.getText().toString().trim();
+        String password = password_edittext.getText().toString().trim();
 
         if (email.isEmpty()) {
-            email_edittext.setHintText("Email is required");
-            email_edittext.requestFocus();
-            animateError(email_edittext,700);
+            email_edittext.setError("Email is required");
+            emailTextInputLayout.requestFocus();
+            animateError(emailTextInputLayout,700);
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            email_edittext.setHintText("Please enter a valid email");
-            email_edittext.requestFocus();
-            animateError(email_edittext,700);
+            email_edittext.setError("Please enter a valid email");
+            emailTextInputLayout.requestFocus();
+            animateError(emailTextInputLayout,700);
             return;
         }
 
         if (password.isEmpty()) {
-            password_edittext.setHintText("Password is required");
-            password_edittext.requestFocus();
-            animateError(password_edittext,700);
+            password_edittext.setError("Password is required");
+            psdTextInputLayout.requestFocus();
+            animateError(psdTextInputLayout,700);
             return;
         }
 
@@ -158,19 +163,19 @@ public class SignIn extends Fragment {
     // Password Reset Method
     public void sendPasswordReset() {
         // [START send_password_reset]
-        String email = email_edittext.getText().trim();
+        String email = email_edittext.getText().toString().trim();
 
         if (email.isEmpty()) {
-            email_edittext.setHintText("Email is required");
-            email_edittext.requestFocus();
-            animateError(email_edittext,700);
+            email_edittext.setError("Email is required");
+            emailTextInputLayout.requestFocus();
+            animateError(emailTextInputLayout,700);
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            email_edittext.setHintText("Please enter a valid email");
-            email_edittext.requestFocus();
-            animateError(email_edittext,700);
+            email_edittext.setError("Please enter a valid email");
+            emailTextInputLayout.requestFocus();
+            animateError(emailTextInputLayout,700);
             return;
         }
 
