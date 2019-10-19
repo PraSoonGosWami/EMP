@@ -182,6 +182,7 @@ public class Register extends Fragment {
             return;
         }
 
+        progressBarReg.setVisibility(View.VISIBLE);
         background.setAlpha(0.3f);
         background.setBackgroundColor(Color.parseColor("#99000000"));
 
@@ -207,6 +208,7 @@ public class Register extends Fragment {
 
                             }
 
+                            progressBarReg.setVisibility(View.GONE);
                             background.setAlpha(1f);
                             background.setBackgroundResource(android.R.color.transparent);
 

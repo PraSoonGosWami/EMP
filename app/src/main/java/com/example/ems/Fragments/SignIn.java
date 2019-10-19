@@ -35,6 +35,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
+import static com.example.ems.Utils.Helper.LONG;
 import static com.example.ems.Utils.Helper.SHORT;
 import static com.example.ems.Utils.Helper.animateError;
 import static com.example.ems.Utils.Helper.showSnackbar;
@@ -141,12 +142,11 @@ public class SignIn extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getContext(), ""+mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     getActivity().finish();
                 } else {
 
-                    showSnackbar(task.getException().getMessage(),getActivity(),SHORT);
+                    showSnackbar(task.getException().getMessage(),getActivity(),LONG);
                 }
 
                 progressBar.setVisibility(View.GONE);
