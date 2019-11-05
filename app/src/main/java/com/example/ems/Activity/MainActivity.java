@@ -4,13 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
     private TextView bottomText;
+    private Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setElevation(0f);
-        getSupportActionBar().setTitle("Dashboard");
+        getSupportActionBar().setTitle("EMS");
+        getSupportActionBar().setSubtitle("Dashboard");
 
         firebaseAuth = FirebaseAuth.getInstance();
         bottomText = findViewById(R.id.welcome);
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         if(firebaseUser!=null) {
+            splashScreen();
             checkApprovedStatus();
             //set user online
             databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(true);
@@ -105,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         }
+                        dialog.dismiss();
                     }
 
                     @Override
@@ -171,5 +177,15 @@ public class MainActivity extends AppCompatActivity {
                 .show();
 
 
+    }
+
+    public void splashScreen(){
+        LayoutInflater factory = LayoutInflater.from(this);
+        final View v = factory.inflate(R.layout.splash_screen, null);
+        dialog = new Dialog(MainActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.splash_screen);
+        dialog.setCancelable(true);
+        dialog.show();
     }
 }
