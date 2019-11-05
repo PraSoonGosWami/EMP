@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="@android:color/darker_gray"
+    android:color="@color/blue"
     tools:targetApi="lollipop">
 
     <item>
         <shape android:shape="rectangle">
 
 
-            <corners android:radius="8dp" />
+            <corners android:radius="4dp" />
 
 
             <gradient
                 android:angle="0"
-                android:endColor="@color/green"
-                android:startColor="@color/green" />
+                android:endColor="@color/colorPrimaryDark"
+                android:startColor="@color/colorPrimaryDark" />
+
+            <stroke
+                android:color="@color/colorAccent"
+                android:width="2dp"
+                />
 
 
         </shape>

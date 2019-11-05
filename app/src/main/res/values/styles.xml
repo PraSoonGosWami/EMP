@@ -29,8 +29,8 @@
     </style>
 
     <style name="EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#009688</item>
-        <item name="hintTextColor">#009688</item>
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="hintTextColor">@color/blue</item>
         <item name="boxStrokeWidth">2dp</item>
 
 

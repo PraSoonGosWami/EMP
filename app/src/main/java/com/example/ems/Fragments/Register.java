@@ -3,6 +3,8 @@ package com.example.ems.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -17,7 +19,11 @@ import android.widget.RelativeLayout;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.ems.Model.Emp;
+import com.example.ems.Model.Leaves;
 import com.example.ems.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -191,15 +197,16 @@ public class Register extends Fragment {
 
             if(task.isComplete()){
                 //setting display name
-                new UserProfileChangeRequest.Builder().setDisplayName(fName+" "+lName).build();
+                mAuth.getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder()
+                        .setDisplayName(fName+" "+lName)
+                        .build());
+
                 //creating user database
                 databaseReference.child("Emp").child(mAuth.getUid())
-                        .setValue(new Emp(fName,lName,email,phone,address,eid,"N/A",false,false))
+                        .setValue(new Emp(fName,lName,email,phone,address,eid,"N/A",false,false,"N/A","N/A"))
                         .addOnCompleteListener(task1 -> {
                             if(task1.isComplete()) {
-                                showSnackbar("Registered successfully\nWait for admin's approval", getActivity(), LONG);
-                                mAuth.signOut();
-                                getFragmentManager().popBackStackImmediate();
+                                addLeaves(mAuth.getCurrentUser());
 
                             }
                             else{
@@ -226,7 +233,24 @@ public class Register extends Fragment {
 
     }
 
-    public void addUserDetails(FirebaseUser user){
+    public void addLeaves(FirebaseUser user){
+
+        databaseReference.child("Leaves").child(user.getUid()).setValue(
+                new Leaves(12,11,11)
+        ).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isComplete()){
+                    showSnackbar("Registered successfully\nWait for admin's approval", getActivity(), LONG);
+                    mAuth.signOut();
+                    getFragmentManager().popBackStackImmediate();
+                }
+                else{
+                    showSnackbar(task.getException().getMessage(),getActivity(),LONG);
+                }
+            }
+        });
+
 
     }
 

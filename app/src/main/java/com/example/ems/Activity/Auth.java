@@ -25,10 +25,9 @@ public class Auth extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
         firebaseAuth = FirebaseAuth.getInstance();
 
-
-
-
     }
+
+
 
     @Override
     protected void onStart() {

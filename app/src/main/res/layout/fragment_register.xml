@@ -11,11 +11,12 @@
     <RelativeLayout
         android:id="@+id/dim_back2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/register">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                     android:textSize="18sp"
                     android:textColor="@android:color/white"
                     android:gravity="center"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="24dp"
                     android:padding="12dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
@@ -100,7 +101,7 @@
                         android:layout_marginBottom="6dp"
                         android:layout_weight="1"
                         android:textColorHint="@color/colorAccent"
-                        android:hint="First name">
+                        android:hint="Last name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/lname_register"
@@ -245,10 +246,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:clickable="true"
             android:background="@drawable/orange_button"
             android:text="Done"
-            android:textColor="@color/white"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
 
             />
