@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".Fragments.MyExpense">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="#EEEEEE"
+                app:cardCornerRadius="8dp">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/salary_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_margin="16dp"
+                    android:padding="12dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="6dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/outflow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Outflow: --"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textColor="@color/yellow"/>
+                <TextView
+                    android:id="@+id/inflow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inflow: --"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textColor="@color/green"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/expense_rView"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_funds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:backgroundTint="@color/green"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:rippleColor="@android:color/darker_gray"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/remove_funds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:backgroundTint="@color/yellow"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_minus"
+        android:layout_margin="16dp"
+        app:rippleColor="@android:color/darker_gray"/>
+
+
+
+
+</RelativeLayout>

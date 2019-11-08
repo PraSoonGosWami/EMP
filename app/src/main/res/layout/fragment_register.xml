@@ -249,7 +249,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:clickable="true"
-            android:background="@drawable/orange_button"
+            android:background="@drawable/white_border_button"
             android:text="Done"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"

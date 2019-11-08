@@ -79,38 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
                             }
 
-                            getDesignation();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-    }
-
-    public void getDesignation(){
-
-        databaseReference.child("Emp").child(firebaseUser.getUid()).child("designation")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()){
-                            String designation = dataSnapshot.getValue(String.class);
-
-                            if(designation.equals("MANAGER")) {
-                                //set manager
-                            }
-                            else {
-                                // set emp
-                            }
                             bottomText.setText("Welcome! "+firebaseUser.getDisplayName());
                             Helper.swapFragments(new DashboardEmployee(),R.id.container_frame_main,getSupportFragmentManager());
-
+                            dialog.dismiss();
 
                         }
-                        dialog.dismiss();
                     }
 
                     @Override
@@ -118,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
     }
+
 
 
     @Override

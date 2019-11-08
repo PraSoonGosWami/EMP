@@ -14,8 +14,8 @@
         android:rowCount="3"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
         android:padding="8dp">
 
         <androidx.cardview.widget.CardView
@@ -27,22 +27,23 @@
             android:layout_margin="8dp"
             android:padding="8dp"
             app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/colorGrayAccent"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_profile"
-                    android:tint="@color/blue"
-
+                    android:tint="#DDDDDD"
                     android:adjustViewBounds="false"/>
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:textStyle="bold"
                     android:padding="2dp"
                     android:layout_margin="6dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorAccent"
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
@@ -73,17 +74,17 @@
             android:clickable="true"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_leaves"
-
                     android:adjustViewBounds="false"/>
 
                 <TextView
@@ -106,25 +107,25 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            app:cardBackgroundColor="@color/colorGrayAccent"
             android:layout_margin="8dp"
             android:padding="8dp"
-            app:cardBackgroundColor="@color/blue"
             app:cardCornerRadius="8dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_attendance"
-
                     android:adjustViewBounds="false"/>
 
                 <TextView
@@ -150,18 +151,20 @@
             android:layout_margin="8dp"
             android:padding="8dp"
             app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/blue"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_discussion"
                     android:adjustViewBounds="false"/>
@@ -173,7 +176,7 @@
                     android:textStyle="bold"
                     android:padding="2dp"
                     android:layout_margin="6dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorAccent"
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
@@ -186,6 +189,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            app:cardBackgroundColor="@color/colorGrayAccent"
             android:layout_margin="8dp"
             android:padding="8dp"
             app:cardCornerRadius="8dp"
@@ -193,14 +197,15 @@
             android:foreground="?android:attr/selectableItemBackground"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_expense"
                     android:adjustViewBounds="false"/>
@@ -213,7 +218,7 @@
                     android:padding="2dp"
                     android:textSize="14sp"
                     android:layout_margin="6dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorAccent"
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
@@ -234,17 +239,17 @@
             android:foreground="?android:attr/selectableItemBackground"
             >
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_team"
-
                     android:adjustViewBounds="false"/>
 
                 <TextView
