@@ -2,6 +2,9 @@ package com.example.ems.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.ems.Fragments.DashboardEmployee;
 import com.example.ems.R;
+import com.example.ems.Utils.AttendanceCreatorTask;
 import com.example.ems.Utils.Helper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +30,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Created by Prasoon Goswami
@@ -60,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             checkApprovedStatus();
             //set user online
             databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(true);
+
+            performBackgroundTask();
         }
 
     }
@@ -93,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -102,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this,Auth.class));
             finish();
         }
+
 
     }
 
@@ -160,5 +168,16 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.splash_screen);
         dialog.setCancelable(true);
         dialog.show();
+    }
+
+    public void performBackgroundTask(){
+
+        PeriodicWorkRequest.Builder myWorkBuilder =
+                new PeriodicWorkRequest.Builder(AttendanceCreatorTask.class, 24, TimeUnit.HOURS);
+
+        PeriodicWorkRequest myWork = myWorkBuilder.build();
+        WorkManager.getInstance(this)
+                .enqueueUniquePeriodicWork("jobTag", ExistingPeriodicWorkPolicy.KEEP, myWork);
+
     }
 }

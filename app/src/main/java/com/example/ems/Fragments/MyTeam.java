@@ -37,6 +37,8 @@ public class MyTeam extends Fragment {
     private TeamAdapter teamAdapter;
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
+    private String designation = "null";
+
 
 
     public MyTeam() {
@@ -50,15 +52,31 @@ public class MyTeam extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_team, container, false);
 
-        recyclerView = view.findViewById(R.id.team_rView);
-        teamAdapter = new TeamAdapter(teamList,getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(teamAdapter);
-
-
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.keepSynced(true);
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //getting designation
+        databaseReference.child("Emp").child(firebaseUser.getUid()).child("designation")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            designation = dataSnapshot.getValue(String.class);
+                            recyclerView = view.findViewById(R.id.team_rView);
+                            teamAdapter = new TeamAdapter(teamList,getContext(),designation,getFragmentManager());
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(teamAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
 
         getTeamList();
 

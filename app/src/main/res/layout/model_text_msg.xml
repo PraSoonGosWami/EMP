@@ -13,10 +13,9 @@
         android:padding="6dp"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
             app:cardCornerRadius="30dp"
-            android:layout_gravity="center"
             android:layout_margin="8dp"
             android:elevation="8dp">
             <androidx.appcompat.widget.AppCompatImageView

@@ -74,6 +74,10 @@ public class DashboardEmployee extends Fragment implements View.OnClickListener 
                 Helper.swapFragmentsWithBackStack(new Discussion(),R.id.container_frame_main,getFragmentManager());
                 ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("Discussion");
                 break;
+            case R.id.attendance:
+                Helper.swapFragmentsWithBackStack(new MyAttendance(),R.id.container_frame_main,getFragmentManager());
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("My Attendance");
+                break;
 
         }
     }

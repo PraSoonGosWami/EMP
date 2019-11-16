@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ems.Adapters.DiscussionAdapter;
@@ -42,6 +44,8 @@ public class Discussion extends Fragment {
     private ArrayList<Message> list = new ArrayList<>();
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
+    private TextView noConversationText;
+    private ProgressBar progressBar;
     public Discussion() {
         // Required empty public constructor
     }
@@ -56,6 +60,12 @@ public class Discussion extends Fragment {
         msg = view.findViewById(R.id.msg);
         send = view.findViewById(R.id.send);
         recyclerView = view.findViewById(R.id.discussion_rView);
+        noConversationText = view.findViewById(R.id.no_conversation_text);
+        progressBar = view.findViewById(R.id.discussion_prog_bar);
+
+        noConversationText.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
         discussionAdapter = new DiscussionAdapter(list,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(discussionAdapter);
@@ -82,6 +92,9 @@ public class Discussion extends Fragment {
                             if(team!=null)
                                 getMessages(team);
                         }
+                        noConversationText.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.GONE);
+
                     }
 
                     @Override
@@ -102,10 +115,14 @@ public class Discussion extends Fragment {
                             for(DataSnapshot data : dataSnapshot.getChildren()){
                                 message = data.getValue(Message.class);
                                 list.add(message);
-;                            }
-
+                            }
+                            if(list.isEmpty())
+                                noConversationText.setVisibility(View.VISIBLE);
+                            else
+                                noConversationText.setVisibility(View.GONE);
                             discussionAdapter.notifyDataSetChanged();
                             recyclerView.scrollToPosition(list.size()-1);
+                            progressBar.setVisibility(View.GONE);
 
                         }
                     }

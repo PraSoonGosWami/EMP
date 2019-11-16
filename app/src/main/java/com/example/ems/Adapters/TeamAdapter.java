@@ -2,6 +2,7 @@ package com.example.ems.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +10,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ems.Fragments.MyAttendance;
 import com.example.ems.Model.Teams;
 import com.example.ems.R;
+import com.example.ems.Utils.Helper;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     private ArrayList<Teams> searchAdapterList;
     private Context context;
+    private String designation;
+    private FragmentManager fragmentManager;
 
 
-    public TeamAdapter(ArrayList<Teams> teamAdapterList, Context context) {
+    public TeamAdapter(ArrayList<Teams> teamAdapterList, Context context, String designation, FragmentManager fragmentManager) {
         this.searchAdapterList = teamAdapterList;
         this.context = context;
+        this.designation = designation;
+        this.fragmentManager = fragmentManager;
     }
 
 
@@ -42,8 +51,22 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         Glide.with(context).
         load(list.getPhotoURI())
         .into(holder.image);
-        holder.name.setText(list.getName());
+        String name = list.getName();
+        if(name.equals(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()))
+            name += " (You)";
+        holder.name.setText(name);
         holder.post.setText(list.getPost());
+
+        if(designation.equals("MANAGER") || designation.equals("TEAM LEAD")){
+            holder.itemView.setOnClickListener(v->{
+                Bundle bundle = new Bundle();
+                bundle.putString("UID",list.getUid());
+                bundle.putString("NAME",list.getName());
+                Helper.swapFragmentsWithBackStackAndBundle(new MyAttendance(),bundle,R.id.container_frame_main,fragmentManager);
+            });
+        }
+
+
 
 
     }
