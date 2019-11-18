@@ -8,16 +8,17 @@ public class Emp {
     private String address;
     private String empid;
     private String designation;
-    private boolean isOnline;
-    private boolean isProfileApproved;
+    private boolean online;
+    private boolean profileApproved;
     private String team;
     private String photoURI;
+    private String uid;
 
 
     public Emp() {
     }
 
-    public Emp(String fName, String lName, String email, String phone, String address, String empid, String designation, boolean isOnline, boolean isProfileApproved, String team, String photoURI) {
+    public Emp(String fName, String lName, String email, String phone, String address, String empid, String designation, boolean online, boolean profileApproved, String team, String photoURI, String uid) {
         this.fName = fName;
         this.lName = lName;
         this.email = email;
@@ -25,10 +26,11 @@ public class Emp {
         this.address = address;
         this.empid = empid;
         this.designation = designation;
-        this.isOnline = isOnline;
-        this.isProfileApproved = isProfileApproved;
+        this.online = online;
+        this.profileApproved = profileApproved;
         this.team = team;
         this.photoURI = photoURI;
+        this.uid = uid;
     }
 
     public String getfName() {
@@ -60,11 +62,11 @@ public class Emp {
     }
 
     public boolean isOnline() {
-        return isOnline;
+        return online;
     }
 
     public boolean isProfileApproved() {
-        return isProfileApproved;
+        return profileApproved;
     }
 
     public String getTeam(){
@@ -73,5 +75,9 @@ public class Emp {
 
     public String getPhotoURI() {
         return photoURI;
+    }
+
+    public String getUid() {
+        return uid;
     }
 }

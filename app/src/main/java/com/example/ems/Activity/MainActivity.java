@@ -2,6 +2,8 @@ package com.example.ems.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
@@ -9,6 +11,7 @@ import androidx.work.WorkManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,9 +19,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.ems.Fragments.DashboardEmployee;
 import com.example.ems.R;
 import com.example.ems.Utils.AttendanceCreatorTask;
@@ -30,6 +36,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import net.glxn.qrgen.android.QRCode;
 
 import java.util.concurrent.TimeUnit;
 
@@ -129,14 +138,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.logout:
                 showLogoutDialog();
                 return true;
-            case R.id.qrmenu:
+            case R.id.qrcode:
                 //show qr code
-                Toast.makeText(this, "QR CODE", Toast.LENGTH_SHORT).show();
+                qrPrompt();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -177,9 +186,91 @@ public class MainActivity extends AppCompatActivity {
 
         PeriodicWorkRequest myWork = myWorkBuilder.build();
         WorkManager.getInstance(this)
-                .enqueueUniquePeriodicWork("jobTag", ExistingPeriodicWorkPolicy.KEEP, myWork);
+                .enqueueUniquePeriodicWork("jobTag", ExistingPeriodicWorkPolicy.REPLACE, myWork);
 
     }
+
+
+
+    public void qrPrompt() {
+        LayoutInflater li = LayoutInflater.from(MainActivity.this);
+        View promptsView = li.inflate(R.layout.prompt_qrcode, null);
+        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+
+
+
+        final AppCompatButton checkin = promptsView.findViewById(R.id.checkin);
+        final AppCompatButton checkout = promptsView.findViewById(R.id.checkout);
+        final LinearLayout buttonlayout = promptsView.findViewById(R.id.buttons);
+        final LinearLayout qrLayout = promptsView.findViewById(R.id.qrlayout);
+        final TextView name = promptsView.findViewById(R.id.uname);
+        final TextView empid = promptsView.findViewById(R.id.uempid);
+        final AppCompatImageView qrimage = promptsView.findViewById(R.id.qrimage);
+
+        checkin.setEnabled(true);
+        checkout.setEnabled(true);
+        buttonlayout.setVisibility(View.VISIBLE);
+        qrLayout.setVisibility(View.GONE);
+
+        // create alert dialog
+        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
+
+        checkin.setOnClickListener(v->{
+            checkin.setEnabled(false);
+            checkout.setEnabled(false);
+            generateQr("in",qrimage);
+            buttonlayout.setVisibility(View.GONE);
+            qrLayout.setVisibility(View.VISIBLE);
+
+        });
+        checkout.setOnClickListener(v->{
+            checkin.setEnabled(false);
+            checkout.setEnabled(false);
+            generateQr("out",qrimage);
+            buttonlayout.setVisibility(View.GONE);
+            qrLayout.setVisibility(View.VISIBLE);
+        });
+
+
+        name.setText(firebaseUser.getDisplayName());
+
+        databaseReference.child("Emp").child(firebaseUser.getUid()).child("empid")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            String id = dataSnapshot.getValue(String.class);
+                            empid.setText("Emp Id: "+id);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+
+    }
+
+    private void generateQr(String type, AppCompatImageView imageView){
+        Bitmap myBitmap = QRCode.from(firebaseUser.getUid()+"@"+type)
+                .withSize(256, 256)
+                .withErrorCorrection(ErrorCorrectionLevel.H)
+                .bitmap();
+        Glide.with(this)
+                .load(myBitmap)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(imageView);
+    }
+
+
 
 
 }

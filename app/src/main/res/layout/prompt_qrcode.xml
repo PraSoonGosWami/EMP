@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate QR code"
+        android:textAlignment="center"
+        android:layout_margin="12dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/checkin"
+            android:layout_width="match_parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:text="Check in"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/checkout"
+            android:layout_width="match_parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_margin="8dp"
+            android:background="@color/yellow"
+            android:layout_height="wrap_content"
+            android:text="Check out"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/qrlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/uname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textAlignment="center"
+            android:layout_margin="12dp"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/uempid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emp ID: "
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/qrimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:adjustViewBounds="false"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

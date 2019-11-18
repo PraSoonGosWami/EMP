@@ -63,7 +63,7 @@
                 android:text="In: 10:30 AM"
                 android:textAlignment="textEnd"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:textAlignment="textEnd"
                 android:text="Out: 07:35 PM"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -203,11 +203,13 @@ public class Register extends Fragment {
 
                 //creating user database
                 databaseReference.child("Emp").child(mAuth.getUid())
-                        .setValue(new Emp(fName,lName,email,ph,address,eid,"N/A",false,false,"N/A","N/A"))
+                        .setValue(new Emp(fName,lName,email,ph,address,eid,"N/A",false,false,"N/A","N/A",mAuth.getUid()))
                         .addOnCompleteListener(task1 -> {
                             if(task1.isComplete()) {
 
                                 showSnackbar("Registered successfully\nWait for admin's approval",getActivity(),LONG);
+                                mAuth.signOut();
+                                getFragmentManager().popBackStackImmediate();
 
                             }
                             else{
