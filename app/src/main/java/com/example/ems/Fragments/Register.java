@@ -19,11 +19,9 @@ import android.widget.RelativeLayout;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.ems.Model.Emp;
-import com.example.ems.Model.Leaves;
 import com.example.ems.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -188,6 +186,8 @@ public class Register extends Fragment {
             return;
         }
 
+        String ph = "+91 "+ phone;
+
         progressBarReg.setVisibility(View.VISIBLE);
         background.setAlpha(0.3f);
         background.setBackgroundColor(Color.parseColor("#99000000"));
@@ -203,10 +203,11 @@ public class Register extends Fragment {
 
                 //creating user database
                 databaseReference.child("Emp").child(mAuth.getUid())
-                        .setValue(new Emp(fName,lName,email,phone,address,eid,"N/A",false,false,"N/A","N/A"))
+                        .setValue(new Emp(fName,lName,email,ph,address,eid,"N/A",false,false,"N/A","N/A"))
                         .addOnCompleteListener(task1 -> {
                             if(task1.isComplete()) {
-                                addLeaves(mAuth.getCurrentUser());
+
+                                showSnackbar("Registered successfully\nWait for admin's approval",getActivity(),LONG);
 
                             }
                             else{
@@ -233,25 +234,5 @@ public class Register extends Fragment {
 
     }
 
-    public void addLeaves(FirebaseUser user){
-
-        databaseReference.child("Leaves").child(user.getUid()).setValue(
-                new Leaves(12,11,11)
-        ).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isComplete()){
-                    showSnackbar("Registered successfully\nWait for admin's approval", getActivity(), LONG);
-                    mAuth.signOut();
-                    getFragmentManager().popBackStackImmediate();
-                }
-                else{
-                    showSnackbar(task.getException().getMessage(),getActivity(),LONG);
-                }
-            }
-        });
-
-
-    }
 
 }

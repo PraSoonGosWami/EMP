@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.ems.Model.Message;
 import com.example.ems.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -111,7 +111,7 @@ public class MyAttendance extends Fragment {
 
                             }
 
-                            Collections.reverse(attendanceArrayList);
+                            Collections.sort(attendanceArrayList,Collections.reverseOrder());
                             absent.setText("Absent: "+out+" Day(s)");
                             present.setText("Present: "+in+" Day(s)");
                             attendanceAdapter.notifyDataSetChanged();

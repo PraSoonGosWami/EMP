@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ems.Activity.MainActivity;
 import com.example.ems.R;
 import com.example.ems.Utils.Helper;
 
@@ -20,7 +19,7 @@ import com.example.ems.Utils.Helper;
  */
 public class DashboardEmployee extends Fragment implements View.OnClickListener {
 
-    private CardView profile,leaves,attendance,discussion,expense,team;
+    private CardView profile, notes,attendance,discussion,expense,team;
 
     public DashboardEmployee() {
         // Required empty public constructor
@@ -33,7 +32,7 @@ public class DashboardEmployee extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard_employee, container, false);
         profile = view.findViewById(R.id.profile);
-        leaves = view.findViewById(R.id.leaves);
+        notes = view.findViewById(R.id.notes);
         attendance = view.findViewById(R.id.attendance);
         discussion = view.findViewById(R.id.discussion);
         expense = view.findViewById(R.id.expense);
@@ -41,7 +40,7 @@ public class DashboardEmployee extends Fragment implements View.OnClickListener 
 
 
         profile.setOnClickListener(this);
-        leaves.setOnClickListener(this);
+        notes.setOnClickListener(this);
         attendance.setOnClickListener(this);
         discussion.setOnClickListener(this);
         expense.setOnClickListener(this);
@@ -58,9 +57,9 @@ public class DashboardEmployee extends Fragment implements View.OnClickListener 
                 Helper.swapFragmentsWithBackStack(new Profile(),R.id.container_frame_main,getFragmentManager());
                 ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("Profile");
                 break;
-            case R.id.leaves:
-                Helper.swapFragmentsWithBackStack(new MyLeaves(),R.id.container_frame_main,getFragmentManager());
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("Leaves");
+            case R.id.notes:
+                Helper.swapFragmentsWithBackStack(new Notes(),R.id.container_frame_main,getFragmentManager());
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("My Notes");
                 break;
             case R.id.team:
                 Helper.swapFragmentsWithBackStack(new MyTeam(),R.id.container_frame_main,getFragmentManager());
@@ -78,6 +77,7 @@ public class DashboardEmployee extends Fragment implements View.OnClickListener 
                 Helper.swapFragmentsWithBackStack(new MyAttendance(),R.id.container_frame_main,getFragmentManager());
                 ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle("My Attendance");
                 break;
+
 
         }
     }

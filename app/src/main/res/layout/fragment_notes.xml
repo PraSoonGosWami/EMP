@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".Fragments.Notes">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notes_rView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:backgroundTint="@color/blue"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:tint="@color/white"
+        android:src="@drawable/ic_pencil"
+        app:rippleColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/no_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="You don't have any notes\nGo ahead and add one"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+
+
+</RelativeLayout>

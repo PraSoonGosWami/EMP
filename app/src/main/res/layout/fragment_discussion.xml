@@ -59,8 +59,7 @@
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@android:color/darker_gray"
                 android:layout_margin="8dp"
-                android:inputType="textCapSentences"
-                android:imeOptions="actionSend"
+                android:inputType="textCapSentences|textMultiLine"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:layout_weight="1"/>

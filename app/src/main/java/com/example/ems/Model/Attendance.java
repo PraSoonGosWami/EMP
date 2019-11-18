@@ -1,8 +1,8 @@
 package com.example.ems.Model;
 
-public class Attendance {
+public class Attendance implements Comparable<Attendance>{
     private String date;
-    private long timestamp;
+    private Long timestamp;
     private String in;
     private String out;
     private boolean marked;
@@ -11,7 +11,7 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(String date, long timestamp, String in, String out, boolean marked) {
+    public Attendance(String date, Long timestamp, String in, String out, boolean marked) {
         this.date = date;
         this.timestamp = timestamp;
         this.in = in;
@@ -23,7 +23,7 @@ public class Attendance {
         return date;
     }
 
-    public long getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
@@ -37,5 +37,10 @@ public class Attendance {
 
     public boolean isMarked() {
         return marked;
+    }
+
+    @Override
+    public int compareTo(Attendance attendance) {
+        return this.getTimestamp().compareTo(attendance.getTimestamp()) ;
     }
 }

@@ -61,7 +61,7 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/leaves"
+            android:id="@+id/notes"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -84,13 +84,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
-                    android:src="@drawable/ic_leaves"
+                    android:src="@drawable/ic_notebook"
                     android:adjustViewBounds="false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="My Leaves"
+                    android:text="My Notes"
                     android:textStyle="bold"
                     android:padding="2dp"
                     android:layout_margin="6dp"

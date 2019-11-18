@@ -1,14 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Profile">
+    android:background="@color/colorPrimary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Profile" />
+        android:background="@color/colorPrimary">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="80dp">
 
-</FrameLayout>
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.github.florent37.shapeofview.shapes.DiagonalView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:elevation="1dp"
+            app:shape_diagonal_angle="18"
+            app:shape_diagonal_direction="left"
+            app:shape_diagonal_position="bottom">
+
+            <ImageView
+                android:id="@+id/profileBackgroundImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"/>
+
+
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cardViewProfile"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/profile_nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="10dp"
+                android:text="User name"
+                android:textColor="#fff"
+                android:textSize="28sp"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="18dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profile_emailView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Email: "
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+
+                <TextView
+                    android:id="@+id/profile_phoneView"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:textIsSelectable="true"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+
+                    android:textColor="@color/white"
+                    android:text="Phone: "
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+                <TextView
+                    android:id="@+id/profile_empid"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:textColor="@color/white"
+                    android:text="Emp Id: "
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+                <TextView
+                    android:id="@+id/profile_team"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:textColor="@color/white"
+                    android:text="Team: "
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+
+                <TextView
+                    android:id="@+id/profile_designation"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:textColor="@color/white"
+                    android:text="Designation: "
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+
+                <TextView
+                    android:id="@+id/profile_address"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:textColor="@color/white"
+                    android:text="Address: "
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editProfileDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="334dp"
+            android:layout_marginRight="35dp"
+            android:clickable="true"
+            android:src="@drawable/ic_pencil"
+            app:tint="@color/white"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:elevation="6dp"
+            app:fabSize="mini" />
+    </RelativeLayout>
+</ScrollView>

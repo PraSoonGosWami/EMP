@@ -30,7 +30,7 @@
                 android:layout_marginRight="4dp"
                 android:layout_height="match_parent"
                 android:text="Rs 45000"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:text="Aug 13 2019"
                 android:textAlignment="textEnd"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView

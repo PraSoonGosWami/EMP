@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
             splashScreen();
             checkApprovedStatus();
             //set user online
-            databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(true);
-
+            //databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(true);
             performBackgroundTask();
+
         }
 
     }
@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         //set user offline
-        if(firebaseUser!=null)
-            databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(false);
+       /* if(firebaseUser!=null)
+            databaseReference.child("Emp").child(firebaseUser.getUid()).child("online").setValue(false);*/
     }
 
     @Override
@@ -173,11 +173,13 @@ public class MainActivity extends AppCompatActivity {
     public void performBackgroundTask(){
 
         PeriodicWorkRequest.Builder myWorkBuilder =
-                new PeriodicWorkRequest.Builder(AttendanceCreatorTask.class, 24, TimeUnit.HOURS);
+                new PeriodicWorkRequest.Builder(AttendanceCreatorTask.class, 12, TimeUnit.HOURS);
 
         PeriodicWorkRequest myWork = myWorkBuilder.build();
         WorkManager.getInstance(this)
                 .enqueueUniquePeriodicWork("jobTag", ExistingPeriodicWorkPolicy.KEEP, myWork);
 
     }
+
+
 }

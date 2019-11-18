@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:padding="4dp"
+        android:elevation="6dp"
+        app:cardBackgroundColor="@color/colorGrayAccent"
+        app:cardCornerRadius="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_margin="2dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:id="@+id/nTitle"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:text="Get grocery"
+                    android:layout_margin="8dp"
+                    android:layout_weight="2"
+                    android:padding="6dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:id="@+id/nDate"
+                    android:textStyle="bold"
+                    android:layout_gravity="center|end"
+                    android:textAlignment="textEnd"
+                    android:textSize="14sp"
+                    android:text="Nov 23, 2019"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:padding="6dp"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"/>
+            <TextView
+                android:id="@+id/nBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="6dp"
+                android:textSize="14sp"
+                android:text="1. Apple\n2. Orange\n3. Carrot"
+                android:textColor="@android:color/darker_gray"
+                android:textStyle="bold"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
