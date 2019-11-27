@@ -188,7 +188,7 @@ public class Profile extends Fragment implements BSImagePicker.OnSingleImageSele
 
     //opens image picker dialog
     public void imagePicker() {
-        BSImagePicker picker = new BSImagePicker.Builder("com.invaderx.firebasetrigger.fileprovider")
+        BSImagePicker picker = new BSImagePicker.Builder("com.example.ems.fileprovider")
                 .setMaximumDisplayingImages(24)
                 .setSpanCount(3)
                 .setGridSpacing(Utils.dp2px(2))

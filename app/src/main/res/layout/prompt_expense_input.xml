@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:textSize="14sp"
+                    android:maxLength="10"
                     android:textCursorDrawable="@null"
                     android:imeOptions="actionNext"
                     android:textColor="@color/colorAccent"/>

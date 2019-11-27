@@ -104,7 +104,6 @@
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
                     android:layout_marginBottom="6dp"
-
                     android:textColor="@color/white"
                     android:text="Phone: "
                     android:textStyle="bold" />
